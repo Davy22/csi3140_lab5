@@ -1,0 +1,38 @@
+services:
+  mariadb:
+    image: mariadb:10.11
+    container_name: moodle_mariadb
+    environment:
+      - MARIADB_USER=moodle
+      - MARIADB_PASSWORD=moodlepassword
+      - MARIADB_DATABASE=moodle
+      - MARIADB_ROOT_PASSWORD=rootpassword
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - moodle-network
+    restart: always
+
+  moodle:
+    build: .
+    container_name: moodle_app
+    ports:
+      - "8080:80"
+    volumes:
+      - ./moodle_plugin:/var/www/html/local/securecoursehub
+      - moodledata_volume:/var/www/moodledata
+    networks:
+      - moodle-network
+    depends_on:
+      - mariadb
+    restart: always
+
+volumes:
+  mariadb_data:
+    driver: local
+  moodledata_volume:
+    driver: local
+
+networks:
+  moodle-network:
+    driver: bridge
