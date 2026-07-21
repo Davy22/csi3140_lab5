@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Murder Mystery Book Club - Registration</title>
+  <!-- Linked external stylesheet for Lab 2 -->
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Murder Mystery Book Club</h1>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="registration.html">Registration</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section aria-labelledby="registration-heading">
+      <h2 id="registration-heading">Member Registration</h2>
+      <p>
+        Register below to join the Murder Mystery Book Club. Once registered, you'll receive weekly email
+        reminders with the current book and any schedule changes. Walk-ins are also welcome — but registering
+        helps us plan seating in Room CRX 440-442.
+      </p>
+      <p class="required-note">Fields marked with * are required.</p>
+
+      <form action="#" method="post" id="registration-form" novalidate>
+
+        <!-- Personal Information using Flexbox on desktop -->
+        <fieldset>
+          <legend>Personal Information</legend>
+          <div class="form-row-container">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="full-name">Full name *</label>
+                <input type="text" id="full-name" name="fullName" required minlength="2" maxlength="100" autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="email">University email address *</label>
+                <input type="email" id="email" name="email" required autocomplete="email">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="student-number">Student number *</label>
+                <input type="text" id="student-number" name="studentNumber" required pattern="[0-9]{7,9}" minlength="7" maxlength="9" inputmode="numeric">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone number (optional)</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="20">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Academic Background -->
+        <fieldset>
+          <legend>Academic Background</legend>
+          <div class="form-row-container">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="faculty">Faculty / Program *</label>
+                <select id="faculty" name="faculty" required>
+                  <option value="">Select your faculty</option>
+                  <option value="engineering">Faculty of Engineering</option>
+                  <option value="arts">Faculty of Arts</option>
+                  <option value="science">Faculty of Science</option>
+                  <option value="social-sciences">Faculty of Social Sciences</option>
+                  <option value="law">Faculty of Law</option>
+                  <option value="health">Faculty of Health Sciences</option>
+                  <option value="management">Telfer School of Management</option>
+                  <option value="education">Faculty of Education</option>
+                  <option value="other">Other / Non-student</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="year">Year of study</label>
+                <select id="year" name="year">
+                  <option value="">Select year</option>
+                  <option value="1">1st year</option>
+                  <option value="2">2nd year</option>
+                  <option value="3">3rd year</option>
+                  <option value="4">4th year</option>
+                  <option value="grad">Graduate student</option>
+                  <option value="postdoc">Postdoc / Staff / Faculty</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Reading Preferences -->
+        <fieldset>
+          <legend>Reading Preferences</legend>
+
+          <div class="form-group">
+            <p id="genre-label"><strong>Favourite sub-genre(s) *</strong></p>
+            <div class="checkbox-group" role="group" aria-labelledby="genre-label">
+              <label><input type="checkbox" name="genre" value="classic-whodunit"> Classic Whodunit</label>
+              <label><input type="checkbox" name="genre" value="cozy-mystery"> Cozy Mystery</label>
+              <label><input type="checkbox" name="genre" value="noir"> Noir / Hard-Boiled</label>
+              <label><input type="checkbox" name="genre" value="psychological-thriller"> Psychological Thriller</label>
+              <label><input type="checkbox" name="genre" value="historical-mystery"> Historical Mystery</label>
+              <label><input type="checkbox" name="genre" value="nordic-noir"> Nordic Noir</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <p id="experience-label"><strong>How would you describe your experience with mystery fiction? *</strong></p>
+            <div class="radio-group" role="group" aria-labelledby="experience-label">
+              <label><input type="radio" name="experience" value="new" required> New to the genre</label>
+              <label><input type="radio" name="experience" value="occasional"> Occasional reader</label>
+              <label><input type="radio" name="experience" value="avid"> Avid mystery reader</label>
+              <label><input type="radio" name="experience" value="enthusiast"> Enthusiast / longtime fan</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Additional Information -->
+        <fieldset>
+          <legend>Additional Information</legend>
+
+          <div class="form-group">
+            <label for="how-heard">How did you hear about the club? *</label>
+            <select id="how-heard" name="howHeard" required>
+              <option value="">Select one</option>
+              <option value="friend">A friend or classmate</option>
+              <option value="poster">Campus poster or flyer</option>
+              <option value="social-media">Social media</option>
+              <option value="professor">Professor or TA</option>
+              <option value="uottawa-events">uOttawa events page</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="comments">Questions, dietary restrictions for events, or anything else we should know:</label>
+            <textarea id="comments" name="comments" rows="4" maxlength="600"></textarea>
+          </div>
+        </fieldset>
+
+        <button type="submit">Submit registration</button>
+
+      </form>
+
+      <!-- Confirmation message shown after submit -->
+      <div id="confirmation" role="alert" aria-live="polite">
+        <strong>✅ Registration received!</strong>
+        <p>
+          Thank you for registering. You'll receive a confirmation email shortly at the address you provided.
+          We look forward to seeing you at the next meeting in Room CRX 440-442!
+        </p>
+        <p>
+          In the meantime, check the <a href="schedule.html">Schedule</a> to find out what we're reading next.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="contact-reg-heading">
+      <h2 id="contact-reg-heading">Contact Us</h2>
+      <p>
+        Prefer to register by email? Write to us at
+        <a href="mailto:mmbc@uottawa.ca">mmbc@uottawa.ca</a>.
+        For more information about the University of Ottawa's student clubs, visit the
+        <a href="https://www.uottawa.ca/student-experience/campus-life/student-clubs" target="_blank" rel="noopener noreferrer">
+          Student Clubs page
+        </a>.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Murder Mystery Book Club - CSI 3140 Lab 2</p>
+  </footer>
+
+  <!-- <script>
+    (function () {
+      var form = document.getElementById('registration-form');
+      var confirmation = document.getElementById('confirmation');
+
+      if (!form || !confirmation) return;
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        form.style.display = 'none';
+        confirmation.style.display = 'block';
+        confirmation.focus();
+      });
+    })();
+  </script> -->
+</body>
+</html>

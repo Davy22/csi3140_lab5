@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Murder Mystery Book Club - Schedule</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Murder Mystery Book Club</h1>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="registration.html">Registration</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section aria-labelledby="schedule-heading">
+      <h2 id="schedule-heading">Spring/Summer 2026 Meeting Schedule</h2>
+      <p>
+        All meetings are held on <strong>Mondays</strong> in <strong>Room CRX 440-442</strong>
+        at the University of Ottawa. New members are welcome to drop in at any session.
+        Check the table below for the book of the week and the meeting time.
+      </p>
+      <p>
+        <em>* The schedule is now loaded dynamically from our Lab 4 REST API.</em>
+      </p>
+
+      <div class="filter-bar">
+        <label for="genre-filter">Filter by sub-genre:</label>
+        <select id="genre-filter">
+          <option value="all">All genres</option>
+          <option value="Classic Whodunit">Classic Whodunit</option>
+          <option value="Nordic Noir">Nordic Noir</option>
+          <option value="Psychological Thriller">Psychological Thriller</option>
+          <option value="Hard-Boiled Noir">Hard-Boiled Noir</option>
+        </select>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <caption>Weekly Meeting Schedule, Spring/Summer 2026</caption>
+          <thead>
+            <tr>
+              <th scope="col">Date (Monday)</th>
+              <th scope="col">Book Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Sub-Genre</th>
+              <th scope="col">Time</th>
+              <th scope="col">Room</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows will be populated dynamically by script.js using fetch() -->
+            <tr>
+              <td colspan="6" style="text-align: center;">Loading schedule from server...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="location-heading">
+      <h2 id="location-heading">Finding Us</h2>
+      <p>
+        We meet in <strong>Room CRX 440-442</strong>, located on the fourth floor of the
+        <strong>Learning Crossroads (CRX)</strong> at the University of Ottawa, 100 Louis-Pasteur Private, Ottawa, ON.
+      </p>
+      <a href="registration.html" class="button-link">Register for the Club</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Murder Mystery Book Club - CSI 3140 Lab 4</p>
+  </footer>
+
+</body>
+</html>

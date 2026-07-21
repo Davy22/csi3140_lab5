@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Murder Mystery Book Club - About</title>
+  <!-- Linked external stylesheet for Lab 2 -->
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Murder Mystery Book Club</h1>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="registration.html">Registration</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section aria-labelledby="about-heading">
+      <h2 id="about-heading">About the Club</h2>
+      <p>
+        The <strong>Murder Mystery Book Club</strong> was founded in 2022 by a small group of University of Ottawa
+        students who shared a passion for crime fiction and collaborative storytelling. What started as a study-break
+        activity in a campus lounge has grown into a lively weekly gathering with members from all faculties.
+      </p>
+      <p>
+        Our club is dedicated to thoughtful, spoiler-rich discussion of murder mysteries in all their forms — from
+        the golden-age classics of Agatha Christie and Dorothy Sayers to contemporary psychological thrillers and
+        Nordic noir.
+      </p>
+
+      <img
+        src="bookclub.jpg"
+        alt="Members of the Murder Mystery Book Club gathered around a table covered in books and reading notes"
+        width="700"
+        height="420"
+        class="responsive-img"
+      >
+    </section>
+
+    <section aria-labelledby="mission-heading">
+      <h2 id="mission-heading">Our Mission</h2>
+      <p>We aim to:</p>
+      <ul>
+        <li>Foster a love of mystery and crime fiction on campus</li>
+        <li>Create a welcoming, inclusive space for readers of all experience levels</li>
+        <li>Encourage critical thinking through literary analysis</li>
+        <li>Introduce members to authors and sub-genres they might not have discovered on their own</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="how-heading">
+      <h2 id="how-heading">How It Works</h2>
+      <ol>
+        <li>A new book is announced each week via email and on this website.</li>
+        <li>Members read the book before the Monday meeting.</li>
+        <li>We meet in Room CRX 440-442 at the scheduled time.</li>
+        <li>Discussion is guided but informal — every theory is welcome.</li>
+        <li>At the end, we vote on the following week's selection.</li>
+      </ol>
+      <a href="schedule.html" class="button-link">See This Week's Schedule</a>
+    </section>
+
+    <section aria-labelledby="subgenres-heading">
+      <h2 id="subgenres-heading">Sub-Genres We Explore</h2>
+      
+      <!-- CSS Grid implementation for Lab 2 -->
+      <div class="card-grid">
+        <article class="card" aria-labelledby="cozy-heading">
+          <h3 id="cozy-heading">Cozy Mysteries</h3>
+          <p>
+            Light-hearted and often set in small communities, cozy mysteries focus on amateur sleuths and downplay
+            violence. Think village fêtes, eccentric neighbours, and impeccably timed revelations.
+            Learn more at the
+            <a href="https://www.theguardian.com/books/crime" target="_blank" rel="noopener noreferrer">
+              Guardian Books - Crime Fiction section
+            </a>.
+          </p>
+        </article>
+
+        <article class="card" aria-labelledby="noir-heading">
+          <h3 id="noir-heading">Noir &amp; Hard-Boiled</h3>
+          <p>
+            Dark, atmospheric, and morally complex. Noir follows world-weary detectives through rain-soaked cities
+            and corrupt institutions. Raymond Chandler and Dashiell Hammett are essential reading.
+          </p>
+        </article>
+
+        <article class="card" aria-labelledby="psychological-heading">
+          <h3 id="psychological-heading">Psychological Thrillers</h3>
+          <p>
+            Unreliable narrators, twisting timelines, and deep dives into motive and obsession. Modern authors like
+            Tana French, Gillian Flynn, and Ruth Ware dominate this space.
+          </p>
+        </article>
+
+        <article class="card" aria-labelledby="historical-heading">
+          <h3 id="historical-heading">Historical Mysteries</h3>
+          <p>
+            Period settings add an extra layer of intrigue. From Victorian London to ancient Rome, historical
+            mysteries blend detective fiction with immersive world-building.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Frequently Asked Questions</h2>
+      <div id="faq-accordion" class="accordion" aria-live="polite"></div>
+    </section>
+
+    <section aria-labelledby="contact-about-heading">
+      <h2 id="contact-about-heading">Get in Touch</h2>
+      <p>
+        Questions about the club? Email the organizers at
+        <a href="mailto:mmbc@uottawa.ca">mmbc@uottawa.ca</a>.
+      </p>
+      <a href="registration.html" class="button-link">Register to Join</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Murder Mystery Book Club - CSI 3140 Lab 2</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,494 @@
+/* * Global Styles & Box Model 
+ * Using border-box for predictable sizing 
+ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color-scheme: light;
+  --bg: powderblue;
+  --text: black;
+  --panel: #c8e8f5;
+  --panel-border: darkblue;
+  --panel-accent: #00008b99;
+  --card-bg: #c8e8f5;
+  --button-bg: darkblue;
+  --button-text: white;
+  --section-bg: rgba(255,255,255,0.85);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --text: #e2e8f0;
+  --panel: #1e293b;
+  --panel-border: #94a3b8;
+  --panel-accent: rgba(148,163,184,0.5);
+  --card-bg: #1e3a8a;
+  --button-bg: #2563eb;
+  --button-text: white;
+  --section-bg: rgba(15,23,42,0.9);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: Georgia, serif;
+  line-height: 1.6;
+}
+
+/* Typography & Colors */
+h1, h2, h3 {
+  color: darkblue;
+}
+
+h2 {
+  font-size: 1.75rem;
+  border-bottom: 2px solid #00008b55;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+p, ul, ol {
+  margin-bottom: 1rem;
+}
+
+ul, ol {
+  padding-left: 2rem;
+}
+
+a {
+  color: darkblue;
+  text-decoration: underline;
+}
+
+a:hover, a:focus {
+  color: #00008b99;
+  text-decoration: none;
+}
+
+/* * Accessibility: Visible focus states 
+ * Ensures keyboard navigation is clear
+ */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 3px solid #8f001a;
+  outline-offset: 2px;
+}
+
+/* Layout & Spacing */
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+/* * Flexbox Layout 1: Header and Navigation
+ * Mobile-first: stacks elements vertically
+ */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: powderblue;
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid darkblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  transition: transform 0.25s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  transform: translateY(0);
+  will-change: transform;
+}
+
+header.scrolled {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  background-color: rgba(176, 224, 232, 0.98);
+}
+
+header.hidden {
+  transform: translateY(-120%);
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+nav {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+nav a {
+  background-color: darkblue;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+nav a:hover, nav a:focus {
+  background-color: #00008b99;
+  color: white;
+}
+
+/* Buttons */
+.button-link {
+  display: inline-block;
+  background-color: darkblue;
+  color: white;
+  text-decoration: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.button-link:hover, .button-link:focus {
+  background-color: #00008b99;
+  color: white;
+}
+
+/* Announcements list */
+.announcements-list {
+  list-style: disc inside;
+  margin-top: 0.8rem;
+  padding-left: 1rem;
+}
+
+.announcements-list li {
+  margin-bottom: 0.5rem;
+  background: rgba(255,255,255,0.03);
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+}
+
+button#theme-toggle {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button#theme-toggle:hover,
+button#theme-toggle:focus {
+  transform: translateY(-1px);
+  outline: 3px solid #f8fafc;
+}
+
+.accordion {
+  border: 2px solid var(--panel-border);
+  border-radius: 8px;
+  background-color: var(--panel);
+  overflow: hidden;
+}
+
+.accordion-item + .accordion-item {
+  border-top: 1px solid var(--panel-border);
+}
+
+.accordion-header {
+  width: 100%;
+  text-align: left;
+  font-weight: bold;
+  background: transparent;
+  border: none;
+  padding: 1rem 1.2rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.accordion-header:hover,
+.accordion-header:focus {
+  background-color: var(--panel-accent);
+}
+
+.accordion-panel {
+  padding: 1rem 1.2rem;
+  display: none;
+  background-color: var(--section-bg);
+}
+
+.accordion-panel.visible {
+  display: block;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  background-color: var(--section-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.filter-bar label {
+  font-weight: bold;
+}
+
+.filter-bar select {
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--panel-border);
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* * CSS Grid Layout: Sub-genres on the About page */
+ * Creates a responsive card gallery
+ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background-color: #c8e8f5;
+  border: 1px solid darkblue;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.card h3 {
+  border-bottom: 1px solid #00008b55;
+  padding-bottom: 0.5rem;
+}
+
+/* Images */
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid darkblue;
+  display: block;
+  margin: 1.5rem 0;
+}
+
+/* * Flexbox Layout 2: Forms
+ */
+fieldset {
+  border: 2px solid darkblue;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #c8e8f5;
+}
+
+legend {
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 0 0.5rem;
+  color: darkblue;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid darkblue;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: #edf6fa;
+}
+
+.checkbox-group, .radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.checkbox-group label, .radio-group label {
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: darkblue;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+button[type="submit"] {
+  background-color: darkblue;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 999px;
+  font-size: 1.05rem;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+button[type="submit"]:hover, button[type="submit"]:focus {
+  background-color: #00008b99;
+}
+
+.required-note {
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+#confirmation {
+  display: none;
+  background-color: #c8e8f5;
+  border: 2px solid darkblue;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Tables */
+.table-responsive {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+  border: 1px solid darkblue;
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #d6eef5;
+  min-width: 650px;
+}
+
+caption {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  text-align: left;
+  padding-top: 0.5rem;
+}
+
+thead th {
+  background-color: darkblue;
+  color: white;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+tbody td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #9ac8d8;
+  vertical-align: top;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #c2e2ef;
+}
+
+tbody tr:hover {
+  background-color: #aed4e6;
+}
+
+.current-week {
+  font-weight: bold;
+  border-left: 4px solid darkblue;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 2px solid darkblue;
+  margin-top: 3rem;
+  font-size: 0.95rem;
+}
+
+/* Utilities */
+.highlight-box {
+  background-color: #b0d8e8;
+  border-left: 4px solid darkblue;
+  padding: 1.2rem;
+  border-radius: 6px;
+  margin-top: 1.5rem;
+}
+
+/* * Responsive Design (Media Queries)
+ * Upgrades layout for tablets and desktops 
+ */
+@media (min-width: 768px) {
+  /* Header converts to side-by-side flex layout */
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+  
+  /* Forms place inputs side-by-side */
+  .form-row {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .form-row .form-group {
+    flex: 1;
+    margin-bottom: 0; 
+  }
+  
+  .form-row-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  /* Checkboxes turn into a multi-column flex layout */
+  .checkbox-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .checkbox-group label {
+    flex: 1 1 40%; 
+  }
+}

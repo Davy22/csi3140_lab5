@@ -1,0 +1,12 @@
+{
+  "name": "csi3140_lab4",
+  "version": "1.0.0",
+  "description": "Lab 4 REST API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
