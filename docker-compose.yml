@@ -3,14 +3,20 @@ services:
     image: mariadb:10.11
     container_name: moodle_mariadb
     environment:
-      - MARIADB_USER=moodle
-      - MARIADB_PASSWORD=moodlepassword
-      - MARIADB_DATABASE=moodle
-      - MARIADB_ROOT_PASSWORD=rootpassword
+      MARIADB_USER: moodle
+      MARIADB_PASSWORD: moodlepassword
+      MARIADB_DATABASE: moodle
+      MARIADB_ROOT_PASSWORD: rootpassword
     volumes:
       - mariadb_data:/var/lib/mysql
     networks:
       - moodle-network
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
     restart: always
 
   moodle:
@@ -18,13 +24,20 @@ services:
     container_name: moodle_app
     ports:
       - "8080:80"
+    environment:
+      MOODLE_DB_HOST: mariadb
+      MOODLE_DB_NAME: moodle
+      MOODLE_DB_USER: moodle
+      MOODLE_DB_PASSWORD: moodlepassword
+      MOODLE_WWWROOT: http://localhost:8080
     volumes:
-      - ./moodle_plugin:/var/www/html/local/securecoursehub
+      - ./local/securecoursehub:/var/www/html/local/securecoursehub
       - moodledata_volume:/var/www/moodledata
     networks:
       - moodle-network
     depends_on:
-      - mariadb
+      mariadb:
+        condition: service_healthy
     restart: always
 
 volumes:

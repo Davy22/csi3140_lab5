@@ -28,5 +28,10 @@ RUN mkdir -p /var/www/moodledata \
     && chown -R www-data:www-data /var/www/html /var/www/moodledata \
     && chmod -R 777 /var/www/moodledata
 
+# Configure Moodle to connect to the MariaDB service from Docker Compose.
+COPY moodle-config.php /var/www/html/config.php
+RUN chown www-data:www-data /var/www/html/config.php \
+    && chmod 640 /var/www/html/config.php
+
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
